@@ -634,7 +634,7 @@ class GeometryView:
         # 🎨 THAY THẾ ENTRY BẰNG TEXT ĐỂ XUỐNG DÒNG
         self.entry_tong = tk.Text(
             self.frame_tong,
-            width=30,
+            width=80,
             height=3,  # Chiều cao 3 dòng
             font=("Arial", 10),
             wrap=tk.WORD,  # Tự động xuống dòng theo từ
