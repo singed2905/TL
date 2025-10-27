@@ -1,0 +1,59 @@
+{
+"workbook": {
+"sheet_name": "EquationInput",
+"header_row": 1
+},
+"modes": {
+"2": {
+"columns": ["a11","a12","c1","a21","a22","c2"],
+"required": ["a11","a12","a21","a22"],
+"defaults": {"c1": "0","c2": "0"},
+"order_note": "Theo thứ tự nhập: PT1: a11,a12,c1; PT2: a21,a22,c2"
+},
+"3": {
+"columns": ["a11","a12","a13","c1","a21","a22","a23","c2","a31","a32","a33","c3"],
+"required": ["a11","a12","a13","a21","a22","a23","a31","a32","a33"],
+"defaults": {"c1": "0","c2": "0","c3": "0"},
+"order_note": "PT1: a11,a12,a13,c1; PT2: a21,a22,a23,c2; PT3: a31,a32,a33,c3"
+},
+"4": {
+"columns": ["a11","a12","a13","a14","c1","a21","a22","a23","a24","c2","a31","a32","a33","a34","c3","a41","a42","a43","a44","c4"],
+"required": ["a11","a12","a13","a14","a21","a22","a23","a24","a31","a32","a33","a34","a41","a42","a43","a44"],
+"defaults": {"c1": "0","c2": "0","c3": "0","c4": "0"},
+"order_note": "PT1: a11..a14,c1; PT2: a21..a24,c2; PT3: a31..a34,c3; PT4: a41..a44,c4"
+}
+},
+"import": {
+"allow_extra_columns": false,
+"trim_spaces": true,
+"empty_as_zero": true
+},
+"export": {
+"sheet_name": "EquationOutput",
+"columns": [
+"row_index",
+"so_an",
+"phien_ban",
+"equation_prefix",
+"encoded_coefficients",
+"final_code",
+"solution",
+"status",
+"messages",
+"he_so_goc",
+"he_so_dieu_chinh"
+]
+},
+"validation": {
+"numeric_check": true,
+"allow_latex_fraction": true,
+"allow_functions": ["sqrt","sin","cos","tan","ln","log","exp","abs","pi","e"],
+"max_equations": 4,
+"max_columns": 20
+},
+"metadata": {
+"version": "1.0.0",
+"description": "Mapping Excel cho Equation Mode (2/3/4 ẩn)",
+"updated": "2025-10-27"
+}
+}

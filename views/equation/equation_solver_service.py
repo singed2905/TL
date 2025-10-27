@@ -1,12 +1,134 @@
-# services/equation_solver_service.py
 import math
 import re
+import json
 from typing import List, Tuple
 
 
 class EquationSolverService:
     def __init__(self):
         self.eps = 1e-10
+        self.math_config = self._load_math_replacements()
+
+    def _load_math_replacements(self):
+        """Load math replacements từ JSON config"""
+        try:
+            with open('config/math_replacements.json', 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception as e:
+            print(f"Lỗi load math config: {e}")
+            return self._get_default_replacements()
+
+    def _get_default_replacements(self):
+        """Fallback config nếu JSON không load được"""
+        return {
+            "math_function_replacements": {
+                "operators": {
+                    "^": {"python_equivalent": "**"}
+                },
+                "functions": {
+                    "sqrt": {"python_equivalent": "math.sqrt"},
+                    "sin": {"python_equivalent": "math.sin"},
+                    "cos": {"python_equivalent": "math.cos"},
+                    "tan": {"python_equivalent": "math.tan"},
+                    "log": {"python_equivalent": "math.log10"},
+                    "ln": {"python_equivalent": "math.log"},
+                    "abs": {"python_equivalent": "abs"},
+                    "exp": {"python_equivalent": "math.exp"}
+                },
+                "constants": {
+                    "pi": {"python_equivalent": "math.pi"},
+                    "e": {"python_equivalent": "math.e"}
+                }
+            },
+            "latex_symbol_replacements": {
+                "mathematical_operators": {
+                    r'\\pi': {"python_equivalent": "math.pi"},
+                    r'\\cdot': {"python_equivalent": "*"},
+                    r'\\times': {"python_equivalent": "*"},
+                    r'\\div': {"python_equivalent": "/"}
+                },
+                "delimiters": {
+                    r'\\left\(': {"python_equivalent": "("},
+                    r'\\right\)': {"python_equivalent": ")"},
+                    r'\\left\{': {"python_equivalent": "("},
+                    r'\\right\}': {"python_equivalent": ")"}
+                },
+                "whitespace": {
+                    r'\\ ': {"python_equivalent": " "},
+                    r'\ ': {"python_equivalent": " "}
+                }
+            },
+            "safe_evaluation_environment": {
+                "allowed_modules": {
+                    "math": {"description": "Python math module"}
+                },
+                "allowed_builtins": {
+                    "abs": {"safe": True},
+                    "round": {"safe": True},
+                    "min": {"safe": True},
+                    "max": {"safe": True}
+                }
+            }
+        }
+
+    def _get_replacements_dict(self):
+        """Tạo dict replacements từ JSON config"""
+        config = self.math_config
+        replacements = {}
+
+        # Load operators  
+        operators = config['math_function_replacements']['operators']
+        for key, value in operators.items():
+            replacements[key] = value['python_equivalent']
+
+        # Load functions
+        functions = config['math_function_replacements']['functions']
+        for key, value in functions.items():
+            replacements[key] = value['python_equivalent']
+
+        # Load constants
+        constants = config['math_function_replacements']['constants']
+        for key, value in constants.items():
+            replacements[key] = value['python_equivalent']
+
+        return replacements
+
+    def _get_safe_dict(self):
+        """Tạo safe evaluation environment từ JSON"""
+        config = self.math_config['safe_evaluation_environment']
+
+        safe_dict = {'__builtins__': {}}
+
+        # Add math module
+        if 'math' in config['allowed_modules']:
+            safe_dict['math'] = math
+
+        # Add allowed builtins
+        allowed_builtins = config['allowed_builtins']
+        for func_name, func_config in allowed_builtins.items():
+            if func_config['safe']:
+                safe_dict[func_name] = eval(func_name)
+
+        return safe_dict
+
+    def _get_latex_replacements(self):
+        """Load LaTeX replacements từ JSON"""
+        config = self.math_config['latex_symbol_replacements']
+        latex_replacements = {}
+
+        # Mathematical operators
+        math_ops = config['mathematical_operators']
+        latex_replacements.update({k: v['python_equivalent'] for k, v in math_ops.items()})
+
+        # Delimiters  
+        delims = config['delimiters']
+        latex_replacements.update({k: v['python_equivalent'] for k, v in delims.items()})
+
+        # Whitespace
+        whitespace = config['whitespace']
+        latex_replacements.update({k: v['python_equivalent'] for k, v in whitespace.items()})
+
+        return latex_replacements
 
     def solve_equation_system(self, danh_sach_he_so: List[str], so_an: int) -> str:
         """Giải hệ phương trình từ danh sách hệ số"""
@@ -40,31 +162,14 @@ class EquationSolverService:
         expr = expr.strip().replace(' ', '')
         expr = self._convert_latex_to_python(expr)
 
-        replacements = {
-            '^': '**',
-            'sqrt': 'math.sqrt',
-            'sin': 'math.sin',
-            'cos': 'math.cos',
-            'tan': 'math.tan',
-            'log': 'math.log10',
-            'ln': 'math.log',
-            'pi': 'math.pi',
-            'e': 'math.e',
-            'abs': 'abs',
-            'exp': 'math.exp'
-        }
+        # Sử dụng config từ JSON thay vì hardcode
+        replacements = self._get_replacements_dict()
 
         for old, new in replacements.items():
             expr = expr.replace(old, new)
 
-        safe_dict = {
-            'math': math,
-            '__builtins__': {},
-            'abs': abs,
-            'round': round,
-            'min': min,
-            'max': max
-        }
+        # Sử dụng safe dict từ JSON config
+        safe_dict = self._get_safe_dict()
 
         try:
             result = eval(expr, safe_dict)
@@ -76,18 +181,8 @@ class EquationSolverService:
         """Chuyển đổi biểu thức LaTeX sang Python"""
         expr = self._convert_latex_fractions(expr)
 
-        latex_replacements = {
-            r'\\pi': 'math.pi',
-            r'\\cdot': '*',
-            r'\\times': '*',
-            r'\\div': '/',
-            r'\\left\(': '(',
-            r'\\right\)': ')',
-            r'\\left\{': '(',
-            r'\\right\}': ')',
-            r'\\ ': ' ',
-            r'\ ': ' ',
-        }
+        # Sử dụng LaTeX replacements từ JSON config
+        latex_replacements = self._get_latex_replacements()
 
         for latex, python in latex_replacements.items():
             expr = re.sub(latex, python, expr)
@@ -198,3 +293,50 @@ class EquationSolverService:
         else:
             ket_qua = ", ".join([f"x_{i + 1} = {nghiem[i]:.6g}" for i in range(so_an)])
             return f"✅ {ket_qua}"
+
+    def reload_math_config(self):
+        """Reload lại math configuration (hữu ích cho development)"""
+        try:
+            self.math_config = self._load_math_replacements()
+            return True
+        except Exception as e:
+            print(f"Lỗi khi reload math config: {e}")
+            return False
+
+    def get_supported_functions(self):
+        """Lấy danh sách các functions được hỗ trợ"""
+        config = self.math_config
+        functions = list(config['math_function_replacements']['functions'].keys())
+        constants = list(config['math_function_replacements']['constants'].keys())
+        operators = list(config['math_function_replacements']['operators'].keys())
+
+        return {
+            'functions': functions,
+            'constants': constants,
+            'operators': operators
+        }
+
+    def validate_expression(self, expr: str) -> dict:
+        """Validate biểu thức trước khi eval"""
+        try:
+            # Test conversion
+            converted = self._convert_latex_to_python(expr)
+
+            # Test replacements
+            replacements = self._get_replacements_dict()
+            for old, new in replacements.items():
+                converted = converted.replace(old, new)
+
+            return {
+                'valid': True,
+                'original': expr,
+                'converted': converted,
+                'message': 'Biểu thức hợp lệ'
+            }
+        except Exception as e:
+            return {
+                'valid': False,
+                'original': expr,
+                'converted': '',
+                'message': f'Lỗi: {str(e)}'
+            }

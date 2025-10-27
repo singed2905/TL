@@ -1,6 +1,7 @@
 {
   "modes": [
     "Geometry Mode",
-    "Equation Mode"
+    "Equation Mode",
+    "Polynomial Equation Mode"
   ]
 }

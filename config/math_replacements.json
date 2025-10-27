@@ -1,0 +1,190 @@
+{
+  "math_function_replacements": {
+    "operators": {
+      "^": {
+        "python_equivalent": "**",
+        "description": "Power operator - converts LaTeX/math notation to Python",
+        "example": "2^3 → 2**3",
+        "category": "arithmetic"
+      }
+    },
+    "functions": {
+      "sqrt": {
+        "python_equivalent": "math.sqrt",
+        "description": "Square root function",
+        "example": "sqrt(25) → math.sqrt(25)",
+        "category": "algebraic"
+      },
+      "sin": {
+        "python_equivalent": "math.sin",
+        "description": "Sine trigonometric function",
+        "example": "sin(pi/2) → math.sin(math.pi/2)",
+        "category": "trigonometric"
+      },
+      "cos": {
+        "python_equivalent": "math.cos",
+        "description": "Cosine trigonometric function",
+        "example": "cos(0) → math.cos(0)",
+        "category": "trigonometric"
+      },
+      "tan": {
+        "python_equivalent": "math.tan",
+        "description": "Tangent trigonometric function",
+        "example": "tan(pi/4) → math.tan(math.pi/4)",
+        "category": "trigonometric"
+      },
+      "log": {
+        "python_equivalent": "math.log10",
+        "description": "Base-10 logarithm function",
+        "example": "log(100) → math.log10(100)",
+        "category": "logarithmic"
+      },
+      "ln": {
+        "python_equivalent": "math.log",
+        "description": "Natural logarithm function (base e)",
+        "example": "ln(e) → math.log(math.e)",
+        "category": "logarithmic"
+      },
+      "abs": {
+        "python_equivalent": "abs",
+        "description": "Absolute value function",
+        "example": "abs(-5) → abs(-5)",
+        "category": "algebraic"
+      },
+      "exp": {
+        "python_equivalent": "math.exp",
+        "description": "Exponential function (e^x)",
+        "example": "exp(1) → math.exp(1)",
+        "category": "exponential"
+      }
+    },
+    "constants": {
+      "pi": {
+        "python_equivalent": "math.pi",
+        "description": "Pi mathematical constant (3.14159...)",
+        "example": "pi → math.pi",
+        "category": "mathematical_constants",
+        "value": 3.141592653589793
+      },
+      "e": {
+        "python_equivalent": "math.e",
+        "description": "Euler's number mathematical constant (2.71828...)",
+        "example": "e → math.e",
+        "category": "mathematical_constants",
+        "value": 2.718281828459045
+      }
+    }
+  },
+  "latex_symbol_replacements": {
+    "mathematical_operators": {
+      "\\\\pi": {
+        "python_equivalent": "math.pi",
+        "description": "LaTeX pi symbol",
+        "example": "\\pi → math.pi",
+        "category": "constants"
+      },
+      "\\\\cdot": {
+        "python_equivalent": "*",
+        "description": "LaTeX multiplication dot",
+        "example": "a \\cdot b → a * b",
+        "category": "operators"
+      },
+      "\\\\times": {
+        "python_equivalent": "*",
+        "description": "LaTeX multiplication cross",
+        "example": "a \\times b → a * b",
+        "category": "operators"
+      },
+      "\\\\div": {
+        "python_equivalent": "/",
+        "description": "LaTeX division symbol",
+        "example": "a \\div b → a / b",
+        "category": "operators"
+      }
+    },
+    "delimiters": {
+      "\\\\left\\(": {
+        "python_equivalent": "(",
+        "description": "LaTeX left parenthesis",
+        "example": "\\left( → (",
+        "category": "delimiters"
+      },
+      "\\\\right\\)": {
+        "python_equivalent": ")",
+        "description": "LaTeX right parenthesis",
+        "example": "\\right) → )",
+        "category": "delimiters"
+      },
+      "\\\\left\\{": {
+        "python_equivalent": "(",
+        "description": "LaTeX left brace (converted to parenthesis)",
+        "example": "\\left\\{ → (",
+        "category": "delimiters"
+      },
+      "\\\\right\\}": {
+        "python_equivalent": ")",
+        "description": "LaTeX right brace (converted to parenthesis)",
+        "example": "\\right\\} → )",
+        "category": "delimiters"
+      }
+    },
+    "whitespace": {
+      "\\\\ ": {
+        "python_equivalent": " ",
+        "description": "LaTeX escaped space",
+        "example": "\\ → ' '",
+        "category": "formatting"
+      },
+      "\\ ": {
+        "python_equivalent": " ",
+        "description": "LaTeX space",
+        "example": "\\ → ' '",
+        "category": "formatting"
+      }
+    }
+  },
+  "safe_evaluation_environment": {
+    "allowed_modules": {
+      "math": {
+        "description": "Python math module for mathematical functions",
+        "functions": ["sqrt", "sin", "cos", "tan", "log", "log10", "exp", "pi", "e"]
+      }
+    },
+    "allowed_builtins": {
+      "abs": {
+        "description": "Absolute value built-in function",
+        "safe": true
+      },
+      "round": {
+        "description": "Rounding built-in function",
+        "safe": true
+      },
+      "min": {
+        "description": "Minimum value built-in function",
+        "safe": true
+      },
+      "max": {
+        "description": "Maximum value built-in function",
+        "safe": true
+      }
+    },
+    "security": {
+      "disable_builtins": true,
+      "description": "Disabled __builtins__ to prevent code injection",
+      "whitelist_only": true
+    }
+  },
+  "fraction_patterns": {
+    "latex_fraction_regex": "\\\\frac\\{([^{}]+)\\}\\{([^{}]+)\\}",
+    "replacement_pattern": "({numerator})/({denominator})",
+    "recursive_processing": true,
+    "description": "Pattern for converting LaTeX fractions to Python division"
+  },
+  "configuration": {
+    "version": "1.0",
+    "description": "Mathematical expression replacements for LaTeX to Python conversion",
+    "author": "TL Application - Equation Mode",
+    "last_updated": "2025-10-27",
+    "usage": "Used by EquationSolverService._eval_math_expression() for converting user input"
+  }
+}

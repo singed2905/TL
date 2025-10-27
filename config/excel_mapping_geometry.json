@@ -1,0 +1,68 @@
+{
+"workbook": {
+"sheet_name": "GeometryInput",
+"header_row": 1
+},
+"entities": {
+"point2d": { "columns": ["x","y"], "required": ["x","y"] },
+"point3d": { "columns": ["x","y","z"], "required": ["x","y","z"] },
+"line3d": { "columns": ["A","B","C","X","Y","Z"], "required": ["A","B","C","X","Y","Z"] },
+"plane": { "columns": ["a","b","c","d"], "required": ["a","b","c","d"] },
+"circle": { "columns": ["x","y","r"], "required": ["x","y","r"] },
+"sphere": { "columns": ["x","y","z","r"], "required": ["x","y","z","r"] }
+},
+"operations": {
+"distance": {
+"columns": ["group_a","type_a","group_b","type_b","params_a","params_b"],
+"required": ["group_a","type_a","group_b","type_b"],
+"note": "Khoảng cách giữa 2 đối tượng (ví dụ: điểm-đường thẳng, điểm-mặt phẳng)"
+},
+"intersection": {
+"columns": ["group_a","type_a","group_b","type_b","params_a","params_b"],
+"required": ["group_a","type_a","group_b","type_b"],
+"note": "Tương giao giữa 2 đối tượng hình học"
+},
+"area": {
+"columns": ["object","params"],
+"required": ["object"],
+"note": "Diện tích (đường tròn, bề mặt cầu)"
+},
+"volume": {
+"columns": ["object","params"],
+"required": ["object"],
+"note": "Thể tích (khối cầu)"
+},
+"line_equation": {
+"columns": ["through_point","direction_vector"],
+"required": ["through_point","direction_vector"],
+"note": "Lập phương trình đường thẳng"
+}
+},
+"import": {
+"allow_extra_columns": true,
+"trim_spaces": true,
+"empty_as_zero": false
+},
+"export": {
+"sheet_name": "GeometryOutput",
+"columns": [
+"operation",
+"input_repr",
+"encoded",
+"result",
+"status",
+"messages"
+]
+},
+"validation": {
+"numeric_check": true,
+"allow_latex_fraction": true,
+"allow_functions": ["sqrt","sin","cos","tan","ln","log","exp","abs","pi","e"],
+"max_entities_per_row": 2
+},
+"metadata": {
+"version": "1.0.0",
+"description": "Mapping Excel cho Geometry Mode",
+"updated": "2025-10-27"
+}
+}

@@ -119,6 +119,8 @@ class MainView:
             self._open_geometry_mode()
         elif selected == "Equation Mode":  # 🆕 THÊM DÒNG NÀY
             self._open_equation_mode()
+        elif selected == "Polynomial Equation Mode":
+            self._open_polynomial_mode()
         elif selected == "Không có mode":
             messagebox.showwarning("Cảnh báo", "Vui lòng chọn một chế độ hợp lệ.")
         else:
@@ -146,6 +148,14 @@ class MainView:
             )
         except Exception as e:
             messagebox.showerror("Lỗi", f"Lỗi khởi động Calculate Mode:\n{str(e)}")
+
+    def _open_polynomial_mode(self):
+        try:
+            from views.polynomial_equation_view import PolynomialEquationView
+            polynomial_window = tk.Toplevel(self.root)
+            PolynomialEquationView(polynomial_window)
+        except Exception as e:
+            messagebox.showerror("Lỗi", f"Không thể mở Polynomial Mode:\n{str(e)}")
 
     def run(self):
         # Căn giữa cửa sổ
