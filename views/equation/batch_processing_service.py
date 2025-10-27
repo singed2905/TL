@@ -152,7 +152,7 @@ class BatchProcessingService:
         }
 
     def _create_total_result_string(self, ket_qua_ma_hoa: List[str], so_an: int) -> str:
-        """Tạo chuỗi kết quả tổng"""
+        """Tạo chuỗi kết quả tổng với định dạng theo số ẩn"""
         try:
             prefix = self.controller.get_equation_prefix(so_an)
             required_counts = {2: 6, 3: 12, 4: 20}
@@ -162,9 +162,16 @@ class BatchProcessingService:
                 if len(ket_qua_ma_hoa) >= required_count:
                     he_so_can_thiet = ket_qua_ma_hoa[:required_count]
                     chuoi_he_so = "=".join(he_so_can_thiet)
-                    return f"{prefix}{chuoi_he_so}== = "
+
+                    # ĐIỀU CHỈNH ĐỊNH DẠNG THEO SỐ ẨN
+                    ending_map = {
+                        2: "== =",
+                        3: "== = =",
+                        4: "== = = ="
+                    }
+                    return f"{prefix}{chuoi_he_so}{ending_map.get(so_an, '=')}"
 
             return "=".join(ket_qua_ma_hoa) + "="
+
         except Exception as e:
-            print(f"Lỗi khi tạo chuỗi kết quả tổng: {e}")
             return "=".join(ket_qua_ma_hoa) + "="

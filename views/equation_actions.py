@@ -34,7 +34,7 @@ class EquationActions:
         self.imported_file_info = None
 
     def _xu_ly_du_lieu(self):
-        """Xử lý dữ liệu - tự động phát hiện chế độ"""
+
         try:
             if self.imported_file_path and os.path.exists(self.imported_file_path):
                 self._xu_ly_file_import()

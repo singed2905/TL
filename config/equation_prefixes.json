@@ -1,17 +1,53 @@
 {
-  "prefixes": {
+  "global_defaults": {
     "2": "w912",
     "3": "w913",
     "4": "w914"
   },
+  "versions": {
+    "fx799": {
+      "base_prefix": "w",
+      "equation": {
+        "2": "w912",
+        "3": "w913",
+        "4": "w914"
+      }
+    },
+    "fx880": {
+      "base_prefix": "wR$$||",
+      "equation": {
+        "2": "wR$$|||",
+        "3": "wR$$||R|",
+        "4": "wR$$||RR|"
+      }
+    },
+    "fx801": {
+      "base_prefix": "yl",
+      "equation": {
+        "2": "yl912",
+        "3": "yl913",
+        "4": "yl914"
+      }
+    },
+    "fx802": {
+      "base_prefix": "zm",
+      "equation": {
+        "2": "zm912",
+        "3": "zm913",
+        "4": "zm914"
+      }
+    },
+    "fx803": {
+      "base_prefix": "an",
+      "equation": {
+        "2": "an912",
+        "3": "an913",
+        "4": "an914"
+      }
+    }
+  },
   "metadata": {
-    "version": "1.0",
-    "created_date": "2024-01-15",
-    "description": "Tiền tố cho các loại hệ phương trình trong Equation Mode",
-    "notes": [
-      "w912: Hệ 2 phương trình 2 ẩn",
-      "w913: Hệ 3 phương trình 3 ẩn",
-      "w914: Hệ 4 phương trình 4 ẩn"
-    ]
+    "version": "2.0",
+    "description": "Prefix Equation theo phiên bản máy và số ẩn"
   }
 }
