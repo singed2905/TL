@@ -1,0 +1,17 @@
+{
+  "prefixes": {
+    "2": "w912",
+    "3": "w913",
+    "4": "w914"
+  },
+  "metadata": {
+    "version": "1.0",
+    "created_date": "2024-01-15",
+    "description": "Tiền tố cho các loại hệ phương trình trong Equation Mode",
+    "notes": [
+      "w912: Hệ 2 phương trình 2 ẩn",
+      "w913: Hệ 3 phương trình 3 ẩn",
+      "w914: Hệ 4 phương trình 4 ẩn"
+    ]
+  }
+}

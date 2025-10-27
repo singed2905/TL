@@ -1,0 +1,124 @@
+{
+    "mappings": [
+        {
+            "find": "\\\\frac\\{([^{}]+)\\}\\{([^{}]+)\\}",
+            "replace": "$1a$2",
+            "type": "regex",
+            "description": "Chuyển phân số \\frac{x}{y} thành dạng x a y"
+        },
+        {
+            "find": "\\-",
+            "replace": "p",
+            "type": "regex",
+            "description": "Dấu âm (trừ) ở đầu chuỗi (sau khoảng trắng) thành 'p'"
+        },
+        {
+            "find": "\\*",
+            "replace": "O",
+            "type": "regex",
+            "description": "Dấu nhân (*) thành 'O'"
+        },
+        {
+            "find": "\\/",
+            "replace": "P",
+            "type": "regex",
+            "description": "Dấu chia (/) thành 'P'"
+        },
+        {
+            "find": "\\\\sqrt\\{",
+            "replace": "s",
+            "type": "regex",
+            "description": "Hàm sqrt{ có dấu \\ → s"
+        },
+        {
+            "find": "sqrt\\{",
+            "replace": "s",
+            "type": "regex",
+            "description": "Hàm sqrt{ không dấu \\ → s"
+        },
+        {
+            "find": "\\\\sqrt\\(",
+            "replace": "s",
+            "type": "regex",
+            "description": "Hàm sqrt( có dấu \\ → s"
+        },
+        {
+            "find": "sqrt\\(",
+            "replace": "s",
+            "type": "regex",
+            "description": "Hàm sqrt( không dấu \\ → s"
+        },
+        {
+            "find": "\\\\sin\\(",
+            "replace": "j(",
+            "type": "regex",
+            "description": "Hàm sin(x) có dấu \\ → S(x)"
+        },
+        {
+            "find": "sin\\(",
+            "replace": "j(",
+            "type": "regex",
+            "description": "Hàm sin(x) không dấu \\ → S(x)"
+        },
+        {
+            "find": "\\\\cos\\(",
+            "replace": "k(",
+            "type": "regex",
+            "description": "Hàm cos(x) có dấu \\ → C(x)"
+        },
+        {
+            "find": "cos\\(",
+            "replace": "k(",
+            "type": "regex",
+            "description": "Hàm cos(x) không dấu \\ → C(x)"
+        },
+        {
+            "find": "\\\\tan\\(",
+            "replace": "l(",
+            "type": "regex",
+            "description": "Hàm tan(x) có dấu \\ → T(x)"
+        },
+        {
+            "find": "tan\\(",
+            "replace": "l(",
+            "type": "regex",
+            "description": "Hàm tan(x) không dấu \\ → T(x)"
+        },
+        {
+            "find": "\\\\ln\\(",
+            "replace": "h(",
+            "type": "regex",
+            "description": "Hàm ln(x) có dấu \\ → L(x)"
+        },
+        {
+            "find": "ln\\(",
+            "replace": "h(",
+            "type": "regex",
+            "description": "Hàm ln(x) không dấu \\ → h("
+        },
+        {
+            "find": "\\}",
+            "replace": ")",
+            "type": "regex",
+            "description": "Ngoặc nhọn đóng } thành )"
+        },
+        {
+            "find": "\\{",
+            "replace": "(",
+            "type": "regex",
+            "description": "Ngoặc nhọn mở { thành ("
+        },
+        {
+            "find": "\\^",
+            "replace": "^",
+            "type": "regex",
+            "description": "Dấu mũ ^ giữ nguyên"
+        },
+        {
+            "find": "_",
+            "replace": "_",
+            "type": "regex",
+            "description": "Dấu chỉ số dưới _ giữ nguyên"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+  "version_file_mapping": {
+    "fx799": "version_1.0.json",
+    "fx880": "version_2.0.json",
+    "fx801": "version_3.0.json",
+    "fx802": "version_dac_biet.json",
+    "fx803": "version_nang_cao.json"
+  },
+  "default_version": "fx799"
+}

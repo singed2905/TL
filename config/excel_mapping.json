@@ -1,0 +1,428 @@
+{
+  "group_a_mapping": {
+    "Điểm": {
+      "description": "Ánh xạ dữ liệu điểm cho nhóm A - 1 cột duy nhất",
+      "columns": {
+        "point_input": {
+          "excel_column": "data_A",
+          "description": "Cột chứa dữ liệu điểm A (x,y hoặc x,y,z)",
+          "required": true
+        }
+      },
+      "required_columns": ["data_A"],
+      "total_columns": 1
+    },
+    "Đường thẳng": {
+      "description": "Ánh xạ dữ liệu đường thẳng cho nhóm A - 2 cột",
+      "columns": {
+        "line_A1": {
+          "excel_column": "d_P_data_A",
+          "description": "Cột chứa điểm thuộc đường thẳng A (A1,B1,C1)",
+          "required": true
+        },
+        "line_X1": {
+          "excel_column": "d_V_data_A",
+          "description": "Cột chứa vector chỉ phương đường thẳng A (X1,Y1,Z1)",
+          "required": true
+        }
+      },
+      "required_columns": ["d_P_data_A", "d_V_data_A"],
+      "total_columns": 2
+    },
+    "Mặt phẳng": {
+      "description": "Ánh xạ dữ liệu mặt phẳng cho nhóm A - 4 cột",
+      "columns": {
+        "plane_a": {
+          "excel_column": "P1_a",
+          "description": "Cột chứa hệ số a của mặt phẳng A",
+          "required": true
+        },
+        "plane_b": {
+          "excel_column": "P1_b",
+          "description": "Cột chứa hệ số b của mặt phẳng A",
+          "required": true
+        },
+        "plane_c": {
+          "excel_column": "P1_c",
+          "description": "Cột chứa hệ số c của mặt phẳng A",
+          "required": true
+        },
+        "plane_d": {
+          "excel_column": "P1_d",
+          "description": "Cột chứa hệ số d của mặt phẳng A",
+          "required": true
+        }
+      },
+      "required_columns": ["P1_a", "P1_b", "P1_c", "P1_d"],
+      "total_columns": 4
+    },
+    "Đường tròn": {
+      "description": "Ánh xạ dữ liệu đường tròn cho nhóm A - 2 cột",
+      "columns": {
+        "circle_center": {
+          "excel_column": "C_data_I1",
+          "description": "Cột chứa tọa độ tâm đường tròn A (x,y)",
+          "required": true
+        },
+        "circle_radius": {
+          "excel_column": "C_data_R1",
+          "description": "Cột chứa bán kính đường tròn A",
+          "required": true
+        }
+      },
+      "required_columns": ["C_data_I1", "C_data_R1"],
+      "total_columns": 2
+    },
+    "Mặt cầu": {
+      "description": "Ánh xạ dữ liệu mặt cầu cho nhóm A - 2 cột",
+      "columns": {
+        "sphere_center": {
+          "excel_column": "S_data_I1",
+          "description": "Cột chứa tọa độ tâm mặt cầu A (x,y,z)",
+          "required": true
+        },
+        "sphere_radius": {
+          "excel_column": "S_data_R1",
+          "description": "Cột chứa bán kính mặt cầu A",
+          "required": true
+        }
+      },
+      "required_columns": ["S_data_I1", "S_data_R1"],
+      "total_columns": 2
+    }
+  },
+  "group_b_mapping": {
+    "Điểm": {
+      "description": "Ánh xạ dữ liệu điểm cho nhóm B - 1 cột duy nhất",
+      "columns": {
+        "point_input": {
+          "excel_column": "data_B",
+          "description": "Cột chứa dữ liệu điểm B (x,y hoặc x,y,z)",
+          "required": true
+        }
+      },
+      "required_columns": ["data_B"],
+      "total_columns": 1
+    },
+    "Đường thẳng": {
+      "description": "Ánh xạ dữ liệu đường thẳng cho nhóm B - 2 cột",
+      "columns": {
+        "line_A2": {
+          "excel_column": "d_P_data_B",
+          "description": "Cột chứa điểm thuộc đường thẳng B (A2,B2,C2)",
+          "required": true
+        },
+        "line_X2": {
+          "excel_column": "d_V_data_B",
+          "description": "Cột chứa vector chỉ phương đường thẳng B (X2,Y2,Z2)",
+          "required": true
+        }
+      },
+      "required_columns": ["d_P_data_B", "d_V_data_B"],
+      "total_columns": 2
+    },
+    "Mặt phẳng": {
+      "description": "Ánh xạ dữ liệu mặt phẳng cho nhóm B - 4 cột",
+      "columns": {
+        "plane_a": {
+          "excel_column": "P2_a",
+          "description": "Cột chứa hệ số a của mặt phẳng B",
+          "required": true
+        },
+        "plane_b": {
+          "excel_column": "P2_b",
+          "description": "Cột chứa hệ số b của mặt phẳng B",
+          "required": true
+        },
+        "plane_c": {
+          "excel_column": "P2_c",
+          "description": "Cột chứa hệ số c của mặt phẳng B",
+          "required": true
+        },
+        "plane_d": {
+          "excel_column": "P2_d",
+          "description": "Cột chứa hệ số d của mặt phẳng B",
+          "required": true
+        }
+      },
+      "required_columns": ["P2_a", "P2_b", "P2_c", "P2_d"],
+      "total_columns": 4
+    },
+    "Đường tròn": {
+      "description": "Ánh xạ dữ liệu đường tròn cho nhóm B - 2 cột",
+      "columns": {
+        "circle_center": {
+          "excel_column": "C_data_I2",
+          "description": "Cột chứa tọa độ tâm đường tròn B (x,y)",
+          "required": true
+        },
+        "circle_radius": {
+          "excel_column": "C_data_R2",
+          "description": "Cột chứa bán kính đường tròn B",
+          "required": true
+        }
+      },
+      "required_columns": ["C_data_I2", "C_data_R2"],
+      "total_columns": 2
+    },
+    "Mặt cầu": {
+      "description": "Ánh xạ dữ liệu mặt cầu cho nhóm B - 2 cột",
+      "columns": {
+        "sphere_center": {
+          "excel_column": "S_data_I2",
+          "description": "Cột chứa tọa độ tâm mặt cầu B (x,y,z)",
+          "required": true
+        },
+        "sphere_radius": {
+          "excel_column": "S_data_R2",
+          "description": "Cột chứa bán kính mặt cầu B",
+          "required": true
+        }
+      },
+      "required_columns": ["S_data_I2", "S_data_R2"],
+      "total_columns": 2
+    }
+  },
+  "equation_mapping_by_phuong_trinh": {
+    "2_an": {
+      "description": "Ánh xạ cho hệ 2 phương trình 2 ẩn - theo cột phương trình",
+      "columns": {
+        "phuong_trinh_1": {
+          "excel_column": "Phương trình 1",
+          "required": true,
+          "description": "Chuỗi hệ số phương trình 1: a11,a12,c1 (phân cách bằng dấu phẩy)"
+        },
+        "phuong_trinh_2": {
+          "excel_column": "Phương trình 2",
+          "required": true,
+          "description": "Chuỗi hệ số phương trình 2: a21,a22,c2 (phân cách bằng dấu phẩy)"
+        }
+      },
+      "required_columns": ["Phương trình 1", "Phương trình 2"],
+      "total_columns": 2,
+      "he_so_per_equation": 3,
+      "total_he_so": 6,
+      "example": {
+        "Phương trình 1": "2,1,5",
+        "Phương trình 2": "1,3,10",
+        "description": "Tương ứng với hệ: 2x + y = 5; x + 3y = 10"
+      }
+    },
+    "3_an": {
+      "description": "Ánh xạ cho hệ 3 phương trình 3 ẩn - theo cột phương trình",
+      "columns": {
+        "phuong_trinh_1": {
+          "excel_column": "Phương trình 1",
+          "required": true,
+          "description": "Chuỗi hệ số phương trình 1: a11,a12,a13,c1 (phân cách bằng dấu phẩy)"
+        },
+        "phuong_trinh_2": {
+          "excel_column": "Phương trình 2",
+          "required": true,
+          "description": "Chuỗi hệ số phương trình 2: a21,a22,a23,c2 (phân cách bằng dấu phẩy)"
+        },
+        "phuong_trinh_3": {
+          "excel_column": "Phương trình 3",
+          "required": true,
+          "description": "Chuỗi hệ số phương trình 3: a31,a32,a33,c3 (phân cách bằng dấu phẩy)"
+        }
+      },
+      "required_columns": ["Phương trình 1", "Phương trình 2", "Phương trình 3"],
+      "total_columns": 3,
+      "he_so_per_equation": 4,
+      "total_he_so": 12,
+      "example": {
+        "Phương trình 1": "1,2,3,6",
+        "Phương trình 2": "4,5,6,15",
+        "Phương trình 3": "7,8,9,24",
+        "description": "Tương ứng với hệ: x + 2y + 3z = 6; 4x + 5y + 6z = 15; 7x + 8y + 9z = 24"
+      }
+    },
+    "4_an": {
+      "description": "Ánh xạ cho hệ 4 phương trình 4 ẩn - theo cột phương trình",
+      "columns": {
+        "phuong_trinh_1": {
+          "excel_column": "Phương trình 1",
+          "required": true,
+          "description": "Chuỗi hệ số phương trình 1: a11,a12,a13,a14,c1 (phân cách bằng dấu phẩy)"
+        },
+        "phuong_trinh_2": {
+          "excel_column": "Phương trình 2",
+          "required": true,
+          "description": "Chuỗi hệ số phương trình 2: a21,a22,a23,a24,c2 (phân cách bằng dấu phẩy)"
+        },
+        "phuong_trinh_3": {
+          "excel_column": "Phương trình 3",
+          "required": true,
+          "description": "Chuỗi hệ số phương trình 3: a31,a32,a33,a34,c3 (phân cách bằng dấu phẩy)"
+        },
+        "phuong_trinh_4": {
+          "excel_column": "Phương trình 4",
+          "required": true,
+          "description": "Chuỗi hệ số phương trình 4: a41,a42,a43,a44,c4 (phân cách bằng dấu phẩy)"
+        }
+      },
+      "required_columns": ["Phương trình 1", "Phương trình 2", "Phương trình 3", "Phương trình 4"],
+      "total_columns": 4,
+      "he_so_per_equation": 5,
+      "total_he_so": 20,
+      "example": {
+        "Phương trình 1": "1,0,0,0,1",
+        "Phương trình 2": "0,1,0,0,2",
+        "Phương trình 3": "0,0,1,0,3",
+        "Phương trình 4": "0,0,0,1,4",
+        "description": "Tương ứng với hệ: x1 = 1; x2 = 2; x3 = 3; x4 = 4"
+      }
+    }
+  },
+  "equation_mapping_by_he_so": {
+    "2_an": {
+      "description": "Ánh xạ cho hệ 2 phương trình 2 ẩn - theo từng hệ số riêng lẻ",
+      "columns": {
+        "a11": {
+          "excel_column": "A11",
+          "required": true,
+          "description": "Hệ số a11 của phương trình 1"
+        },
+        "a12": {
+          "excel_column": "A12",
+          "required": true,
+          "description": "Hệ số a12 của phương trình 1"
+        },
+        "c1": {
+          "excel_column": "C1",
+          "required": true,
+          "description": "Hệ số c1 (vế phải) của phương trình 1"
+        },
+        "a21": {
+          "excel_column": "A21",
+          "required": true,
+          "description": "Hệ số a21 của phương trình 2"
+        },
+        "a22": {
+          "excel_column": "A22",
+          "required": true,
+          "description": "Hệ số a22 của phương trình 2"
+        },
+        "c2": {
+          "excel_column": "C2",
+          "required": true,
+          "description": "Hệ số c2 (vế phải) của phương trình 2"
+        }
+      },
+      "required_columns": ["A11", "A12", "C1", "A21", "A22", "C2"],
+      "total_columns": 6,
+      "example": {
+        "A11": 2, "A12": 1, "C1": 5,
+        "A21": 1, "A22": 3, "C2": 10,
+        "description": "Tương ứng với hệ: 2x + y = 5; x + 3y = 10"
+      }
+    },
+    "3_an": {
+      "description": "Ánh xạ cho hệ 3 phương trình 3 ẩn - theo từng hệ số riêng lẻ",
+      "columns": {
+        "a11": {"excel_column": "A11", "required": true, "description": "Hệ số a11"},
+        "a12": {"excel_column": "A12", "required": true, "description": "Hệ số a12"},
+        "a13": {"excel_column": "A13", "required": true, "description": "Hệ số a13"},
+        "c1":  {"excel_column": "C1",  "required": true, "description": "Hệ số c1"},
+        "a21": {"excel_column": "A21", "required": true, "description": "Hệ số a21"},
+        "a22": {"excel_column": "A22", "required": true, "description": "Hệ số a22"},
+        "a23": {"excel_column": "A23", "required": true, "description": "Hệ số a23"},
+        "c2":  {"excel_column": "C2",  "required": true, "description": "Hệ số c2"},
+        "a31": {"excel_column": "A31", "required": true, "description": "Hệ số a31"},
+        "a32": {"excel_column": "A32", "required": true, "description": "Hệ số a32"},
+        "a33": {"excel_column": "A33", "required": true, "description": "Hệ số a33"},
+        "c3":  {"excel_column": "C3",  "required": true, "description": "Hệ số c3"}
+      },
+      "required_columns": ["A11", "A12", "A13", "C1", "A21", "A22", "A23", "C2", "A31", "A32", "A33", "C3"],
+      "total_columns": 12,
+      "example": {
+        "A11": 1, "A12": 2, "A13": 3, "C1": 6,
+        "A21": 4, "A22": 5, "A23": 6, "C2": 15,
+        "A31": 7, "A32": 8, "A33": 9, "C3": 24,
+        "description": "Tương ứng với hệ: x + 2y + 3z = 6; 4x + 5y + 6z = 15; 7x + 8y + 9z = 24"
+      }
+    },
+    "4_an": {
+      "description": "Ánh xạ cho hệ 4 phương trình 4 ẩn - theo từng hệ số riêng lẻ",
+      "columns": {
+        "a11": {"excel_column": "A11", "required": true, "description": "Hệ số a11"},
+        "a12": {"excel_column": "A12", "required": true, "description": "Hệ số a12"},
+        "a13": {"excel_column": "A13", "required": true, "description": "Hệ số a13"},
+        "a14": {"excel_column": "A14", "required": true, "description": "Hệ số a14"},
+        "c1":  {"excel_column": "C1",  "required": true, "description": "Hệ số c1"},
+        "a21": {"excel_column": "A21", "required": true, "description": "Hệ số a21"},
+        "a22": {"excel_column": "A22", "required": true, "description": "Hệ số a22"},
+        "a23": {"excel_column": "A23", "required": true, "description": "Hệ số a23"},
+        "a24": {"excel_column": "A24", "required": true, "description": "Hệ số a24"},
+        "c2":  {"excel_column": "C2",  "required": true, "description": "Hệ số c2"},
+        "a31": {"excel_column": "A31", "required": true, "description": "Hệ số a31"},
+        "a32": {"excel_column": "A32", "required": true, "description": "Hệ số a32"},
+        "a33": {"excel_column": "A33", "required": true, "description": "Hệ số a33"},
+        "a34": {"excel_column": "A34", "required": true, "description": "Hệ số a34"},
+        "c3":  {"excel_column": "C3",  "required": true, "description": "Hệ số c3"},
+        "a41": {"excel_column": "A41", "required": true, "description": "Hệ số a41"},
+        "a42": {"excel_column": "A42", "required": true, "description": "Hệ số a42"},
+        "a43": {"excel_column": "A43", "required": true, "description": "Hệ số a43"},
+        "a44": {"excel_column": "A44", "required": true, "description": "Hệ số a44"},
+        "c4":  {"excel_column": "C4",  "required": true, "description": "Hệ số c4"}
+      },
+      "required_columns": ["A11", "A12", "A13", "A14", "C1", "A21", "A22", "A23", "A24", "C2", "A31", "A32", "A33", "A34", "C3", "A41", "A42", "A43", "A44", "C4"],
+      "total_columns": 20,
+      "example": {
+        "A11": 1, "A12": 0, "A13": 0, "A14": 0, "C1": 1,
+        "A21": 0, "A22": 1, "A23": 0, "A24": 0, "C2": 2,
+        "A31": 0, "A32": 0, "A33": 1, "A34": 0, "C3": 3,
+        "A41": 0, "A42": 0, "A43": 0, "A44": 1, "C4": 4,
+        "description": "Tương ứng với hệ: x1 = 1; x2 = 2; x3 = 3; x4 = 4"
+      }
+    }
+  },
+  "metadata": {
+    "version": "2.0",
+    "created_date": "2025-01-20",
+    "last_updated": "2025-01-20",
+    "description": "File ánh xạ dữ liệu từ Excel sang ứng dụng - Hỗ trợ cả Geometry Mode và Equation Mode",
+    "column_summary": {
+      "Geometry Mode": {
+        "Điểm": 1,
+        "Đường thẳng": 2,
+        "Mặt phẳng": 4,
+        "Đường tròn": 2,
+        "Mặt cầu": 2
+      },
+      "Equation Mode - Theo phương trình": {
+        "2_an": 2,
+        "3_an": 3,
+        "4_an": 4
+      },
+      "Equation Mode - Theo hệ số": {
+        "2_an": 6,
+        "3_an": 12,
+        "4_an": 20
+      }
+    },
+    "usage_notes": [
+      "Geometry Mode: Sử dụng group_a_mapping và group_b_mapping cho các đối tượng hình học",
+      "Equation Mode - Ưu tiên: Sử dụng equation_mapping_by_phuong_trinh cho cấu trúc đơn giản",
+      "Equation Mode - Nâng cao: Sử dụng equation_mapping_by_he_so cho kiểm soát chi tiết từng hệ số",
+      "Các cột trong Excel phải có tiêu đề chính xác như được định nghĩa trong excel_column",
+      "Đối với dữ liệu điểm trong Geometry Mode: có thể nhập theo dạng tổng hợp (x,y) hoặc (x,y,z)",
+      "Đối với Equation Mode theo phương trình: các hệ số trong mỗi ô được phân cách bằng dấu phẩy",
+      "Các cột required: true là bắt buộc phải có trong file Excel"
+    ],
+    "supported_formats": {
+      "number_formats": ["số nguyên", "số thập phân", "phân số (1/2)", "biểu thức (sqrt(4), 2^3, sin(pi/2))"],
+      "delimiters": {
+        "equation_mapping_by_phuong_trinh": "dấu phẩy (,)",
+        "point_data": "dấu phẩy (,) hoặc dấu chấm phẩy (;)"
+      }
+    },
+    "file_naming_convention": {
+      "geometry_mode": "geometry_data_[description].xlsx",
+      "equation_mode_2an": "he_2_an_[description].xlsx",
+      "equation_mode_3an": "he_3_an_[description].xlsx",
+      "equation_mode_4an": "he_4_an_[description].xlsx"
+    }
+  }
+}
