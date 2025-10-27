@@ -139,13 +139,7 @@ class MainView:
             from views.equation_view import EquationView
             equation_window = tk.Toplevel(self.root)
             EquationView(equation_window)
-        except ImportError:
 
-            messagebox.showinfo(
-                "Đang phát triển",
-                "🧮Mode đang được phát triển!\n\n"
-
-            )
         except Exception as e:
             messagebox.showerror("Lỗi", f"Lỗi khởi động Calculate Mode:\n{str(e)}")
 
