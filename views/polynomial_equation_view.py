@@ -3,6 +3,8 @@ from tkinter import ttk, messagebox
 import json
 import os
 from datetime import datetime
+from controllers.polynomial_controller import PolynomialController
+
 
 
 class PolynomialEquationView:
@@ -247,7 +249,7 @@ class PolynomialEquationView:
         self.roots_text = tk.Text(
             self.roots_frame,
             width=80,
-            height=4,
+            height=10,
             font=("Courier New", 10),
             wrap=tk.WORD,
             bg="#FFF9E6",
@@ -313,7 +315,7 @@ class PolynomialEquationView:
             font=("Arial", 10, "bold"),
             width=15,
             height=2,
-            command=self._process_placeholder
+            command=self._process_placeholder  # đã dùng method xử lý thực
         )
         self.btn_process.pack(side="left", padx=10)
 
@@ -503,8 +505,82 @@ class PolynomialEquationView:
         messagebox.showinfo("Chức năng", "Import Excel - Chưa được triển khai")
 
     def _process_placeholder(self):
-        """Placeholder cho xử lý"""
-        messagebox.showinfo("Chức năng", "Giải & Mã hóa - Chưa được triển khai")
+        """Thay thế placeholder: thực hiện xử lý phương trình"""
+        try:
+            degree = int(self.bac_phuong_trinh_var.get())
+            version = self.phien_ban_var.get()
+            coeffs = [entry.get() for entry in self.coefficient_entries]
+
+            controller = PolynomialController()
+            result = controller.process_equation(degree, coeffs, version)
+
+            if not result.get('success', False):
+                error = result.get('error', 'Có lỗi không xác định')
+                self.status_label.config(text=f"🔴 Lỗi: {error}", fg="#C62828")
+
+                self.roots_text.delete("1.0", tk.END)
+                self.roots_text.insert("1.0", f"Lỗi: {error}")
+                self.final_result_text.delete("1.0", tk.END)
+                self.final_result_text.insert("1.0", "Chưa có kết quả tổng")
+                return
+
+            # Lấy thông tin từ kết quả
+            equation_display = result.get('equation_display', '')
+            summary = result.get('summary', '')
+            roots_display = result.get('roots_display', [])
+            analysis = result.get('analysis', {})
+
+            # ===== CẬP NHẬT Ô NGHIỆM - CHUYỂN TẤT CẢ LÊN ĐÂY =====
+            roots_lines = []
+
+            # 1. Phương trình
+            if equation_display:
+                roots_lines.append(f"Phương trình: {equation_display}")
+                roots_lines.append("")
+
+            # 2. Nghiệm cụ thể
+            if roots_display:
+                roots_lines.append("Nghiệm:")
+                for root in roots_display:
+                    roots_lines.append(f"  {root}")
+                roots_lines.append("")
+
+            # 3. Phân tích
+            if analysis and 'type' in analysis:
+                roots_lines.append(f"Phân loại: {analysis['type']}")
+
+                # Thêm chi tiết cho bậc 2
+                if 'discriminant_value' in analysis:
+                    roots_lines.append(f"Discriminant (Δ): {analysis['discriminant_value']:.6f}")
+
+            # 4. Tóm tắt
+            if summary:
+                roots_lines.append("")
+                roots_lines.append(summary)
+
+            # Cập nhật ô nghiệm với TẤT CẢ thông tin
+            self.roots_text.delete("1.0", tk.END)
+            self.roots_text.insert("1.0", "\n".join(roots_lines))
+
+            # ===== Ô KẾT QUẢ TỔNG - CHỈ DỰ TRỮ CHO MÃ HÓA =====
+            final_lines = [
+                "=== DÀNH CHO MÃ HÓA MÁY TÍNH ===",
+                "",
+                f"Phiên bản: {version}",
+                "",
+                "Mã lệnh sẽ được tạo ở Phase 3...",
+                "",
+                "(Khu vực này để trống cho Calculator Encoding)"
+            ]
+
+            self.final_result_text.delete("1.0", tk.END)
+            self.final_result_text.insert("1.0", "\n".join(final_lines))
+
+            self.status_label.config(text="🟢 Giải phương trình thành công!", fg="#2E7D32")
+
+        except Exception as e:
+            messagebox.showerror("Lỗi", f"Có lỗi xảy ra: {str(e)}")
+            self.status_label.config(text=f"🔴 Lỗi: {str(e)}", fg="#C62828")
 
     def _export_excel_placeholder(self):
         """Placeholder cho export Excel"""
