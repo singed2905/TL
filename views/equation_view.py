@@ -140,7 +140,9 @@ class EquationView:
         guide_text = (
             "• Hỗ trợ biểu thức: sqrt(5), sin(pi/2), 1/2, 2^3, log(10), v.v.\n"
             "• Nhập hệ số cách nhau bằng dấu phẩy\n"
-            "• Ô trống sẽ tự động điền số 0"
+            "• Ô trống sẽ tự động điền số 0\n"
+            "• File excel mẫu cần có các cột Phương trình 1 2 3 4 tương ứng với 2 3 4 ẩn"
+
         )
 
         guide_label = tk.Label(
@@ -213,12 +215,12 @@ class EquationView:
 
         self.entry_tong = tk.Entry(
             self.frame_tong,
-            width=80,
-            font=("Courier New", 9),
+            width=120,
+            font=("Flexio Fx799VN", 13),
             justify="center"
         )
         self.entry_tong.pack(padx=15, pady=12, fill="x")
-        self.entry_tong.insert(0, "Chưa có kết quả tổng")
+        self.entry_tong.insert(0, "")
         self.entry_tong.config(bg="#F1F8E9")
 
         # === KHUNG NÚT CHỨC NĂNG ===
